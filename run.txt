@@ -1,0 +1,10 @@
+x86_64-w64-mingw32-g++ \
+  -static -static-libgcc -static-libstdc++ \
+  -std=c++20 \
+  -I../include \
+  main.cpp \
+  data_loader.cpp \
+  algo/simple_moving_average.cpp \
+  metrics/backtester.cpp \
+  logger/logger.cpp \
+  -o BacktestingApp.exe
