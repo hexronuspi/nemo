@@ -10,6 +10,8 @@ struct DataPoint {
     double high;
     double low;
     double close;
+    double volume;
+    double oi;
 };
 
 class DataLoader {

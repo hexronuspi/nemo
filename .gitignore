@@ -1,0 +1,59 @@
+# Build directories
+build/
+**/build/
+cmake-build-*/
+CMakeBuilds/
+
+# Compiled executables and libraries
+*.exe
+*.dll
+*.so
+*.a
+*.lib
+*.out
+
+# Object files
+*.o
+*.obj
+*.pch
+*.gch
+
+# Log files
+# Ignore contents of logs directory, but not the directory itself
+logs/*
+# Don't ignore .gitkeep file in logs, so the directory can be kept
+!logs/.gitkeep
+# Also ignore top-level log files if any
+*.log
+
+# Data files (ignore contents, not the directory itself)
+# If you have sample data or structure you want to commit, adjust this
+# For example, to keep a sample file: !data/sample_data.csv
+data/*
+# Don't ignore .gitkeep file in data, so the directory can be kept
+!data/.gitkeep
+
+# Editor-specific files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln.docstates
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Other generated files
+BacktestingApp.exe
+src/BacktestingApp.exe 
+run.txt
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+install_manifest.txt
+compile_commands.json

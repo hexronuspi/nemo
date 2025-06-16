@@ -1,5 +1,15 @@
 {
+    "C_Cpp.intelliSenseEngine": "default",
+    "C_Cpp.errorSquiggles": "enabled",
+    "C_Cpp.default.cppStandard": "c++20",
+    "C_Cpp.default.cStandard": "c17",
+    "C_Cpp.default.compilerPath": "cl.exe",
     "files.associations": {
+        "*.h": "cpp",
+        "*.hpp": "cpp",
+        "*.cpp": "cpp",
+        "*.cc": "cpp",
+        "*.cxx": "cpp",
         "stdexcept": "cpp",
         "array": "cpp",
         "atomic": "cpp",
@@ -47,6 +57,16 @@
         "map": "cpp",
         "ratio": "cpp",
         "mutex": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "optional": "cpp",
+        "string_view": "cpp",
+        "variant": "cpp",
+        "xstring": "cpp",
+        "xutility": "cpp",
+        "compare": "cpp",
+        "format": "cpp",
+        "xmemory": "cpp",
+        "xtr1common": "cpp",
+        "xlocmes": "cpp"
     }
 }

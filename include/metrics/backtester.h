@@ -27,6 +27,7 @@ public:
     double get_average_trade_pnl() const;
     double get_win_rate() const;
     double get_max_drawdown() const;
+    void export_trade_log(const std::vector<DataPoint>& data, const std::string& base_filename = "logs/simpleSMABroad_trades");
 };
 
 #endif

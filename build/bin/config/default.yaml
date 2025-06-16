@@ -1,0 +1,95 @@
+# Path: c:\Users\aruna\Desktop\backtest\config\default.yaml
+# Default Backtesting Configuration
+
+# Engine Settings
+engine:
+  name: "SOTA Backtest Engine"
+  version: "1.0.0"
+  enable_real_time_mode: false
+  max_parallel_strategies: 4
+  
+# Data Settings
+data:
+  default_data_dir: "../data"
+  tick_resolution: "1s"  # 1s, 1m, 5m, 1h, 1d
+  preload_data: true
+  enable_data_validation: true
+  
+# Execution Settings
+execution:
+  enable_order_book_simulation: true
+  enable_latency_simulation: true
+  market_data_latency_us: 1      # microseconds
+  order_submission_latency_us: 100
+  fill_latency_us: 50
+  
+# Cost Model Settings
+costs:
+  default_model: "us_equity"
+  commission:
+    maker_fee_rate: 0.0
+    taker_fee_rate: 0.0
+    fixed_fee: 0.0
+  slippage:
+    model: "linear"
+    base_rate: 0.0001
+    impact_rate: 0.01
+    
+# Risk Management
+risk:
+  enable_position_limits: true
+  enable_loss_limits: true
+  enable_exposure_limits: true
+  enable_rate_limiting: true
+  
+  limits:
+    max_position_size: 10000
+    max_notional_exposure: 1000000.0
+    max_portfolio_exposure: 10000000.0
+    max_daily_loss: -10000.0
+    max_total_loss: -50000.0
+    max_drawdown: -0.1
+    max_orders_per_minute: 100
+    max_orders_per_day: 10000
+    max_order_size: 10000
+    loss_cooldown_minutes: 30
+    drawdown_cooldown_minutes: 60
+
+# Logging Settings
+logging:
+  level: "INFO"  # TRACE, DEBUG, INFO, WARN, ERROR, CRITICAL
+  async_logging: true
+  file_path: "../logs/backtest.log"
+  enable_structured_logging: true
+  enable_performance_logging: true
+  
+# Output Settings
+output:
+  default_output_dir: "../logs"
+  export_trades: true
+  export_positions: true
+  export_signals: true
+  generate_report: true
+  report_format: ["markdown", "json", "csv"]
+  
+# Strategy Settings
+# Flattened strategy settings for the current simple config parser
+strategies.default_capital: 100000.0
+strategies.enable_python_strategies: true
+strategies.python_module_path: "../strategies/python"
+strategies.type: "simpleSMABroad"
+  
+# Performance Settings
+performance:
+  enable_profiling: false
+  memory_limit_mb: 2048
+  enable_parallel_processing: true
+  
+# Market Settings
+market:
+  default_exchange: "NYSE"
+  trading_hours:
+    start: "09:30:00"
+    end: "16:00:00"
+    timezone: "America/New_York"
+  trading_days: ["monday", "tuesday", "wednesday", "thursday", "friday"]

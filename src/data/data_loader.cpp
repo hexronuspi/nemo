@@ -29,6 +29,8 @@ std::vector<DataPoint> DataLoader::load_data(const std::string& file_path) {
         std::getline(iss, token, ','); dp.high = std::stod(token);
         std::getline(iss, token, ','); dp.low  = std::stod(token);
         std::getline(iss, token, ','); dp.close = std::stod(token);
+        std::getline(iss, token, ','); dp.volume = std::stod(token);
+        std::getline(iss, token, ','); dp.oi = std::stod(token);
 
         data.push_back(dp);
     }
