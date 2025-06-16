@@ -1,6 +1,6 @@
-# Nemo: High-Performance C++ Backtesting Engine 🚀
+# Nemo: C++ Backtesting Engine
 
-Nemo is a sophisticated, event-driven backtesting engine built primarily in C++17 for high performance, with Python bindings for ease of strategy development and interaction. It's designed for quantitative analysts and algorithmic traders to rigorously test trading strategies against historical market data.
+Nemo is an event-driven backtesting engine built primarily in C++17 for high performance, with Python bindings for ease of strategy development and interaction. It's designed to test trading strategies against historical market data.
 
 ## ✨ Core Features
 
