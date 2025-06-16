@@ -33,6 +33,12 @@ data/*
 # Don't ignore .gitkeep file in data, so the directory can be kept
 !data/.gitkeep
 
+build/*
+# Don't ignore .gitkeep file in build, so the directory can be kept
+!build/.gitkeep
+# Also ignore top-level build files if any
+*.build
+
 # Editor-specific files
 .vscode/
 .idea/
