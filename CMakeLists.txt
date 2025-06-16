@@ -24,7 +24,4 @@ add_custom_command(TARGET nemo POST_BUILD
         ${CMAKE_SOURCE_DIR}/data $<TARGET_FILE_DIR:nemo>/data)
 add_custom_command(TARGET nemo POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/config $<TARGET_FILE_DIR:nemo>/config)
-add_custom_command(TARGET nemo POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy_directory
         ${CMAKE_SOURCE_DIR}/logs $<TARGET_FILE_DIR:nemo>/logs)
