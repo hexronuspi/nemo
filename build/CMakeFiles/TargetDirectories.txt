@@ -1,3 +1,0 @@
-C:/Users/aruna/Desktop/backtest/build/CMakeFiles/nemo.dir
-C:/Users/aruna/Desktop/backtest/build/CMakeFiles/edit_cache.dir
-C:/Users/aruna/Desktop/backtest/build/CMakeFiles/rebuild_cache.dir
