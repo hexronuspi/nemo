@@ -2,6 +2,8 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <vector>
+#include <map>
 
 std::vector<DataPoint> DataLoader::load_data(const std::string& file_path) {
     std::vector<DataPoint> data;
@@ -12,26 +14,31 @@ std::vector<DataPoint> DataLoader::load_data(const std::string& file_path) {
     }
 
     std::string line;
-    bool header_skipped = false;
+    std::vector<std::string> headers;
+    if (std::getline(file, line)) {
+        std::istringstream header_stream(line);
+        std::string col;
+        while (std::getline(header_stream, col, ',')) {
+            headers.push_back(col);
+        }
+    }
 
     while (std::getline(file, line)) {
-        if (!header_skipped) {
-            header_skipped = true;
-            continue; 
-        }
-
         std::istringstream iss(line);
         std::string token;
         DataPoint dp;
-
-        std::getline(iss, dp.timestamp, ','); 
-        std::getline(iss, token, ','); dp.open = std::stod(token);
-        std::getline(iss, token, ','); dp.high = std::stod(token);
-        std::getline(iss, token, ','); dp.low  = std::stod(token);
-        std::getline(iss, token, ','); dp.close = std::stod(token);
-        std::getline(iss, token, ','); dp.volume = std::stod(token);
-        std::getline(iss, token, ','); dp.oi = std::stod(token);
-
+        size_t col_idx = 0;
+        while (std::getline(iss, token, ',')) {
+            if (col_idx < headers.size()) {
+                try {
+                    dp.values[headers[col_idx]] = std::stod(token);
+                } catch (...) {
+                    // If not a double, skip or store as 0
+                    dp.values[headers[col_idx]] = 0.0;
+                }
+            }
+            ++col_idx;
+        }
         data.push_back(dp);
     }
 

@@ -1,7 +1,7 @@
 #include "algo/simple_moving_average.h"
 #include <vector>
-#include <numeric> // For std::accumulate
-#include <stdexcept> // For std::invalid_argument
+#include <numeric>
+#include <stdexcept>
 
 SimpleMovingAverage::SimpleMovingAverage(int short_w, int long_w)
     : short_window(short_w), long_window(long_w) {
@@ -14,6 +14,11 @@ SimpleMovingAverage::SimpleMovingAverage(int short_w, int long_w)
 }
 
 std::vector<int> SimpleMovingAverage::generate_signals(const std::vector<DataPoint>& data) {
+    // Default to column "close" for compatibility
+    return generate_signals(data, "close");
+}
+
+std::vector<int> SimpleMovingAverage::generate_signals(const std::vector<DataPoint>& data, const std::string& column) {
     std::vector<int> signals(data.size(), 0); // 0: Hold, 1: Buy, -1: Sell
 
     if (data.size() < static_cast<size_t>(long_window)) {
@@ -29,7 +34,8 @@ std::vector<int> SimpleMovingAverage::generate_signals(const std::vector<DataPoi
         if (i + 1 >= static_cast<size_t>(short_window)) {
             double sum = 0;
             for (int j = 0; j < short_window; ++j) {
-                sum += data[i - j].close; // Use .close instead of .price
+                auto it = data[i - j].values.find(column);
+                sum += (it != data[i - j].values.end()) ? it->second : 0.0;
             }
             short_mavg[i] = sum / short_window;
         } else {
@@ -42,7 +48,8 @@ std::vector<int> SimpleMovingAverage::generate_signals(const std::vector<DataPoi
         if (i + 1 >= static_cast<size_t>(long_window)) {
             double sum = 0;
             for (int j = 0; j < long_window; ++j) {
-                sum += data[i - j].close; // Use .close instead of .price
+                auto it = data[i - j].values.find(column);
+                sum += (it != data[i - j].values.end()) ? it->second : 0.0;
             }
             long_mavg[i] = sum / long_window;
         } else {

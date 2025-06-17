@@ -2,6 +2,7 @@
 #define BACKTESTER_H
 
 #include <vector>
+#include <string>
 #include "data_loader.h"
 
 struct Trade {
@@ -10,6 +11,12 @@ struct Trade {
     double buy_price;
     double sell_price;
     double pnl;
+    size_t quantity; // number of units traded
+    double capital_before;
+    double capital_after;
+    std::string buy_time;
+    std::string sell_time;
+    double commission; // total commission for the trade
 };
 
 class Backtester {
@@ -21,7 +28,7 @@ private:
 
 public:
     Backtester(double init_cash = 10000.0);
-    void run_simulation(const std::vector<DataPoint>& data, const std::vector<int>& signals);
+    void run_simulation(const std::vector<DataPoint>& data, const std::vector<int>& signals, const std::string& column);
     double get_pnl() const;
     size_t get_num_trades() const;
     double get_average_trade_pnl() const;
