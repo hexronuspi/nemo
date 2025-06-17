@@ -18,14 +18,6 @@ build/
 *.pch
 *.gch
 
-# Log files
-logs/
-# # Ignore contents of logs directory, but not the directory itself
-# logs/*
-# # Don\'t ignore .gitkeep file in logs, so the directory can be kept
-# !logs/.gitkeep
-# # Also ignore top-level log files if any
-# *.log
 
 # build/* # Covered by build/
 # # Don\'t ignore .gitkeep file in build, so the directory can be kept
