@@ -236,10 +236,6 @@ This will typically:
 *   **Python API**: `bt.set_config(key, value)` and `bt.get_config(key)` can be used for runtime configuration if the C++ backend supports these keys.
 *   **Logging**: Logger is initialized in `src/main.cpp` (e.g., `Logger::get().init(...)`). Python strategies use `bt.log_info()`, etc., which route to the C++ logger.
 
-## 📜 License
-
-This project is licensed to Aditya Raj (hexronus@gmail.com, +91 8797073498)
-
 ---
 
 For a deep dive into the system's components and their interactions, refer to [ARCHITECTURE.md](ARCHITECTURE.md).
