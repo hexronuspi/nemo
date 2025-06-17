@@ -146,7 +146,7 @@ This will typically:
 2.  Create a Python script:
 
     ```python
-    import backtest_engine as bt  # Or your specific module name
+    import backtest_engine as bt
     import os
 
     def main():
