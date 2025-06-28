@@ -1,24 +1,5 @@
 # Nemo: C++ Backtesting Engine
 
-Nemo is an event-driven backtesting engine built primarily in C++17 for high performance, with Python bindings for ease of strategy development and interaction. It's designed to test trading strategies against historical market data.
-
-## ✨ Core Features
-
-*   **Event-Driven Architecture**: Simulates market dynamics realistically through an asynchronous event bus.
-*   **High Performance**: C++ core ensures fast processing of large datasets and complex computations.
-*   **Modularity**: Well-defined components for data, execution, risk, and strategy logic.
-*   **Extensibility**: Easily add new strategies (C++/Python), data sources, cost models, and risk rules.
-*   **Realistic Simulation**:
-    *   **Order Book**: Simulates limit order book dynamics.
-    *   **Latency**: Configurable market data and order processing latency.
-    *   **Cost Modeling**: Includes slippage (multiple models) and commission calculations.
-    *   **Risk Management**: Pre- and post-trade risk checks (position limits, loss limits, rate limits, etc.).
-*   **Python Integration (Pybind11)**:
-    *   Develop strategies in Python.
-    *   Control the engine and access results from Python scripts.
-*   **Comprehensive Logging**: Structured logging for diagnostics and trade auditing.
-*   **Detailed Results**: Generates P&L statements, trade logs, performance metrics (Sharpe ratio, drawdown, etc.), and customizable reports.
-*   **CMake Build System**: Modern, cross-platform build configuration.
 
 ## 🏗️ Architecture Overview
 
@@ -228,14 +209,4 @@ This will typically:
         *   Access P&L: `bt.get_strategy_pnl(self.strategy_id)`
 3.  (Optional) Provide a factory function like `create_strategy(strategy_id: str, **kwargs)` in your Python module that returns an instance of your strategy. This is useful if `add_strategy_from_python` expects a factory.
 4.  In your main Python script, use `bt.add_strategy_from_python("unique_strategy_id", "strategies.python.my_python_strategy")` to load it.
-
-## ⚙️ Configuration
-
-*   **Engine Parameters**: Many core parameters (data files, initial capital, strategy-specific settings) are currently set in `src/main.cpp` or when adding strategies.
-*   **`Config` Struct (`include/utils/config.h`)**: A basic structure for future file-based configuration (JSON/YAML).
-*   **Python API**: `bt.set_config(key, value)` and `bt.get_config(key)` can be used for runtime configuration if the C++ backend supports these keys.
-*   **Logging**: Logger is initialized in `src/main.cpp` (e.g., `Logger::get().init(...)`). Python strategies use `bt.log_info()`, etc., which route to the C++ logger.
-
----
-
 For a deep dive into the system's components and their interactions, refer to [ARCHITECTURE.md](ARCHITECTURE.md).
